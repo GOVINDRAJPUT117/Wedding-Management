@@ -1,4 +1,8 @@
 import mongoose from 'mongoose'
-const url = 'mongodb://localhost:27017/weddingmanagment';
-mongoose.connect(url);
-console.log("Successfully connected to mongod database");
+const url = process.env.DBURL;
+mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => console.log("✅ Connected to MongoDB Atlas"))
+    .catch((err) => console.error("❌ Error:", err));
