@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import MongoStore from 'connect-mongo';
 import userRoute from './routes/userRoute.js'
 import categoryRoute from './routes/categoryRoute.js'
 import serviceRoute from './routes/serviceRoute.js'
