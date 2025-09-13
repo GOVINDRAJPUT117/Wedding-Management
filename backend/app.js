@@ -6,6 +6,8 @@ import categoryRoute from './routes/categoryRoute.js'
 import serviceRoute from './routes/serviceRoute.js'
 import bookingRoute from './routes/bookingRoute.js'
 import cartRoute from './routes/cartRoute.js'
+import dotenv from "dotenv";
+dotenv.config(); // .env file ke variables ko process.env me load karega
 
 import cors from 'cors'
 import session from 'express-session'
