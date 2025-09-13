@@ -33,10 +33,14 @@ app.use(fileUpload())
 app.use(
     cors({
         origin: ["https://wedding-management-1-4noj.onrender.com"], // tumhara frontend ka URL
-        methods: ["GET", "POST", "PUT", "DELETE"],
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"], //New Thing
         credentials: true,
     })
 );
+
+//New thing:-
+app.options("*", cors());
 
 app.use('/upload', express.static('upload'));
 
