@@ -30,7 +30,13 @@ app.use(session({
     cookie: { secure: false } // true अगर HTTPS use कर रहे हैं
 }));
 app.use(fileUpload())
-app.use(cors());
+app.use(
+    cors({
+        origin: ["https://wedding-management-1-4noj.onrender.com"], // tumhara frontend ka URL
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    })
+);
 
 app.use('/upload', express.static('upload'));
 
@@ -44,5 +50,5 @@ app.use("/cart", cartRoute);
 
 
 app.listen(3000, () => {
-  console.log("Server running on port 3000");
+    console.log("Server running on port 3000");
 });
