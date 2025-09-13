@@ -17,19 +17,26 @@ const app = express()
 
 //to extract body data from request(POST, PUT, DELETE, PATCH)
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(session({secret:'gfbhmgfxjngfd'}))
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(session({secret:'gfbhmgfxjngfd'}))
+app.use(session({
+    secret: process.env.TOKEN_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/your-db-name' }),
+    cookie: { secure: false } // true अगर HTTPS use कर रहे हैं
+}));
 app.use(fileUpload())
 app.use(cors());
 
 app.use('/upload', express.static('upload'));
 
 //Route level Middleware
-app.use("/user",userRoute);
-app.use("/category",categoryRoute);
-app.use("/service",serviceRoute);
-app.use("/booking",bookingRoute);
-app.use("/cart",cartRoute );
+app.use("/user", userRoute);
+app.use("/category", categoryRoute);
+app.use("/service", serviceRoute);
+app.use("/booking", bookingRoute);
+app.use("/cart", cartRoute);
 
 
 
