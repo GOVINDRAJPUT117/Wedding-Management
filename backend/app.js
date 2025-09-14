@@ -30,14 +30,24 @@ app.use(session({
     cookie: { secure: false } // true अगर HTTPS use कर रहे हैं
 }));
 app.use(fileUpload())
+// app.use(
+//     cors({
+//         origin: ["https://wedding-management-1-4noj.onrender.com"], // tumhara frontend ka URL
+//         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//         allowedHeaders: ["Content-Type", "Authorization"], //New Thing
+//         credentials: true,
+//     })
+// );
+
 app.use(
     cors({
-        origin: ["https://wedding-management-1-4noj.onrender.com"], // tumhara frontend ka URL
+        origin: ["http://localhost:5173", "https://wedding-management-1-4noj.onrender.com"],
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        allowedHeaders: ["Content-Type", "Authorization"], //New Thing
+        allowedHeaders: ["Content-Type", "Authorization"],
         credentials: true,
     })
 );
+
 
 //New thing:-
 app.options("*", cors());
